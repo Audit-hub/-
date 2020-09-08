@@ -18,8 +18,8 @@ local inicfg = require 'inicfg'
 
 update_state = false
 
-local script_vers = 1
-local script_vers_text = "1.00"
+local script_vers = 2
+local script_vers_text = "2.00"
 
 local update_url = "https://raw.githubusercontent.com/Audit-hub/-/master/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
@@ -64,7 +64,7 @@ function main()
 	while true do
 		imgui.Process = MENU.v
 
-		if isKeyDown(VK_K) then
+		if isKeyDown(VK_NUMPAD0) then
 			MENU.v = true -- Открываем окно Imgui
 		end
 	wait(0)
