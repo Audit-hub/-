@@ -54,7 +54,7 @@ function main()
 	sampRegisterChatCommand("gr", cmd_gr)
 	sampRegisterChatCommand('com', cmd_com)
 	-----------
-	sampRegisterChatCommand('dev', cmd_dev)
+	--sampRegisterChatCommand('dev', cmd_dev)
 	-----------ПРИ ЗАПУСКЕ СКРИПТА БУДЕТ ПОЯВЛЯТСЯ:
 	sampAddChatMessage('Скрипт {FFFF00} Сокращенные команды', -1)
 	sampAddChatMessage('Успешно {00FF00} Загружен', -1)
@@ -130,9 +130,9 @@ function main()
 
  end
 
- function cmd_dev
-	sampRegisterChatCommand('{00FF00} Поздравляем! {FFFF00} Вы вошли в режим разработчика!', -1)
- end
+ --function cmd_dev
+	--sampAddChatMessage('Поздравляем! {00FF00} Вы успешно вошли в режим-разработчика!',-1)
+-- end
 
  function imgui.OnDrawFrame()
     local sw, sh = getScreenResolution() -- получение разрешения экрана
