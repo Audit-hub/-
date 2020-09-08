@@ -18,13 +18,13 @@ local inicfg = require 'inicfg'
 
 update_state = false
 
-local script_vers = 2
-local script_vers_text = "1.05"
+local script_vers = 1
+local script_vers_text = "1.00"
 
 local update_url = "https://raw.githubusercontent.com/Audit-hub/-/master/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
 
-local script_url = "" -- тут свою ссылку
+local script_url = "https://github.com/Audit-hub/-/raw/master/ARZ_by_Audit.lua" -- тут свою ссылку
 local script_path = thisScript().path
 
 
@@ -38,7 +38,8 @@ function main()
 				if tonumber (updateIni.info.vers) > script_vers then
 					sampAddChatMessage('Есть обновление! Версия: ' .. updateIni.info.vers_text, -1)
 				update_state = true
-			end	
+				end	
+				os.remove(update_path)
 		end
 	end)
 
@@ -115,6 +116,17 @@ function main()
 	else
 	sampSendChat('/giverank ' .. var1 .. ' ' .. var2)
 	end
+
+	if update_state then
+		downloadUrlToFile(script_url, script_vers, script_path, function(id, status)
+			if status == dlstatus.STATUS_ENDDOWNLOADDATA then
+				sampAddChatMessage('Скрипт успешно обновлен!', -1)
+				thisScript():reload()
+			end
+
+		end)
+	end
+
  end
 
  function imgui.OnDrawFrame()
