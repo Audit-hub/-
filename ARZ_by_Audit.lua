@@ -18,8 +18,8 @@ local inicfg = require 'inicfg'
 
 update_state = false
 
-local script_vers = 1
-local script_vers_text = "1.00"
+local script_vers = 2
+local script_vers_text = "1.05"
 
 local update_url = "https://raw.githubusercontent.com/Audit-hub/-/master/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
@@ -54,6 +54,7 @@ function main()
 	sampRegisterChatCommand("gr", cmd_gr)
 	sampRegisterChatCommand('com', cmd_com)
 	-----------
+	sampRegisterChatCommand('dev', cmd_dev)
 	-----------ПРИ ЗАПУСКЕ СКРИПТА БУДЕТ ПОЯВЛЯТСЯ:
 	sampAddChatMessage('Скрипт {FFFF00} Сокращенные команды', -1)
 	sampAddChatMessage('Успешно {00FF00} Загружен', -1)
@@ -129,6 +130,10 @@ function main()
 
  end
 
+ function cmd_dev
+	sampRegisterChatCommand('{00FF00} Поздравляем! {FFFF00} Вы вошли в режим разработчика!', -1)
+ end
+
  function imgui.OnDrawFrame()
     local sw, sh = getScreenResolution() -- получение разрешения экрана
     imgui.SetNextWindowPos(imgui.ImVec2(sw / 2, sh / 2), imgui.Cond.FirstUseEver, imgui.ImVec2(0.5, 0.5)) -- Выравнивание окна по центру
@@ -191,3 +196,4 @@ function main()
 						
 									imgui.End()
 end
+-----test obnovi gi gi gi
