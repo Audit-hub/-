@@ -18,8 +18,10 @@ local inicfg = require 'inicfg'
 
 update_state = false
 
-local script_vers = 2
-local script_vers_text = "2.00"
+local script_vers = 3
+local script_vers_text = "3.00"
+
+local combo_select = imgui.ImInt(0)
 
 local update_url = "https://raw.githubusercontent.com/Audit-hub/-/master/update.ini" -- тут тоже свою ссылку
 local update_path = getWorkingDirectory() .. "/update.ini" -- и тут свою ссылку
@@ -193,6 +195,20 @@ function main()
 								end
 									imgui.EndPopup()
 								end
+
+								if imgui.Button(u8'Авто-Отыгровка Оружий', imgui.ImVec2(-1, 20)) then
+									imgui.OpenPopup(u8'Авто-Отыгровка Оружий')
+								end
+
+								if imgui.BeginPopupModal(u8'Авто-Отыгровка Оружий', _, imgui.WindowFlags.NoCollapse + imgui.WindowFlags.AlwaysAutoResize) then
+									imgui.Separator()	
+										imgui.Combo(u8'Авто-Отыгровка Оружий', combo_select, 'Включить\0Выключить\0\0')
+									imgui.Separator()
+										if imgui.Button(u8'Закрыть', imgui.ImVec2(200, 20)) then 
+									imgui.CloseCurrentPopup()
+								end
+									imgui.EndPopup()
+							end
 						
 									imgui.End()
 end
